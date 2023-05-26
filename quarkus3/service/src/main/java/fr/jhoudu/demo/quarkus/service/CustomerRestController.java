@@ -1,5 +1,7 @@
 package fr.jhoudu.demo.quarkus.service;
 
+import io.quarkus.runtime.StartupEvent;
+import jakarta.enterprise.event.Observes;
 import jakarta.ws.rs.HeaderParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
@@ -11,7 +13,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import com.tietoevry.quarkus.resteasy.problem.HttpProblem;
 
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -20,6 +24,7 @@ public class CustomerRestController {
 
     private final CustomerService service;
     //private ObservationRegistry registry = null;
+    private int startupTime = 0;
 
     CustomerRestController(CustomerService service) {
         this.service = service;
@@ -29,6 +34,9 @@ public class CustomerRestController {
         registry
                 .observationConfig()
                 .observationHandler(new ObservationTextPublisher(System.out::println));*/
+    }
+    void onStart(@Observes StartupEvent startup) {
+        System.out.println(new SimpleDateFormat("HH:mm:ss.SSS").format(new Date()));
     }
 
     @GetMapping
@@ -53,7 +61,7 @@ public class CustomerRestController {
         return Observation
                 .createNotStarted("byName", this.registry)
                 .observe(() -> this.service.byName(name));*/
-
+        System.out.println(new SimpleDateFormat("HH:mm:ss.SSS").format(new Date()));
         return this.service.byName(name);
     }
 
