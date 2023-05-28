@@ -10,7 +10,7 @@ Avec la même API que le service SpringBoot.
 ./gradlew assemble
 
 docker build -f src/main/docker/Dockerfile.jvm -t quarkus/service-jvm .
-run -i --rm -p 8080:8080 quarkus/service-jvm
+docker run -i --rm -p 8080:8080 quarkus/service-jvm
 ```
 
 ## Créer une app native windows
