@@ -18,3 +18,8 @@ date +"%T.%3N" &&  ./quarkus3/service/run-quarkus-jvm.sh
 
 Calculer la différence entre la première et la dernière date.
 
+## Lancer docker compose
+
+```shell script
+docker compose up
+```

@@ -4,6 +4,69 @@ Service REST
 
 Avec la même API que le service SpringBoot.
 
+## Créer l'image jvm
+
+```shell script
+./gradlew assemble
+
+docker build -f src/main/docker/Dockerfile.jvm -t quarkus/service-jvm .
+run -i --rm -p 8080:8080 quarkus/service-jvm
+```
+
+## Créer une app native windows
+Installer les prérequis, voir :
+
+https://medium.com/graalvm/using-graalvm-and-native-image-on-windows-10-9954dc071311
+
+Lancer la commande suivante (tester avec cmd ou adapter Linux / Powershell)
+
+```shell script
+& "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat" 
+
+gradlew build -Dquarkus.package.type=native
+```
+
+SI KO, essayer :
+Lancer l'invite de commande Visual Studio via le menu windows :
+
+Start -> Visual Studio 2019 -> Tools -> x64 Native Tools Command Prompt
+
+puis :
+
+```shell script
+./gradlew build -Dquarkus.package.type=native -Dquarkus.native.container-build=true
+```
+
+## Créer une app native Linux
+
+Lancer la commande suivante sur cmd (ou adapter à linux / powershell) :
+
+```shell script
+gradlew build -Dquarkus.package.type=native -Dquarkus.native.container-build=true
+```
+
+## Créer l'image native docker
+
+```shell script
+docker build -f src/main/docker/Dockerfile.native -t quarkus/service-micro .
+```
+
+Puis
+
+## Lancer le test
+
+Dans un shell lancer :
+
+```shell script
+../../loop-curl.sh
+```
+
+Dans un autre shell, lancer :
+
+```shell script
+date +"%T.%3N" &&  ./run-quarkus-jvm.sh
+```
+
 # Documentation générée
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
