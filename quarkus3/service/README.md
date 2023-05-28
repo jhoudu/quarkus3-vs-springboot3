@@ -14,11 +14,13 @@ docker run -i --rm -p 8080:8080 quarkus/service-jvm
 ```
 
 ## Créer une app native windows
-Installer les prérequis, voir :
+Nécessite de préparer l'environnement Windows (install jvm, conf JAVA_HOME et PATH).
+
+Puis installer les prérequis, voir :
 
 https://medium.com/graalvm/using-graalvm-and-native-image-on-windows-10-9954dc071311
 
-Lancer la commande suivante (tester avec cmd ou adapter Linux / Powershell)
+Lancer la commande suivante :
 
 ```shell script
 & "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat" 
@@ -34,7 +36,7 @@ Start -> Visual Studio 2019 -> Tools -> x64 Native Tools Command Prompt
 puis :
 
 ```shell script
-./gradlew build -Dquarkus.package.type=native -Dquarkus.native.container-build=true
+gradlew build -Dquarkus.package.type=native -Dquarkus.native.container-build=true
 ```
 
 ## Créer une app native Linux
