@@ -10,6 +10,11 @@ Avec la même API que le service SpringBoot.
 ./gradlew assemble
 
 docker build -f src/main/docker/Dockerfile.jvm -t quarkus/service-jvm .
+```
+
+Pour la lancer
+
+```shell script
 docker run -i --rm -p 8080:8080 quarkus/service-jvm
 ```
 
@@ -53,7 +58,11 @@ Lancer la commande suivante sur cmd (ou adapter à linux / powershell) :
 docker build -f src/main/docker/Dockerfile.native -t quarkus/service-micro .
 ```
 
-Puis
+Pour la lancer
+
+```shell script
+docker run -i --rm -p 8080:8080 quarkus/service-micro
+```
 
 ## Lancer le test
 
