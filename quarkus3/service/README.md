@@ -42,7 +42,7 @@ puis :
 Lancer la commande suivante sur cmd (ou adapter à linux / powershell) :
 
 ```shell script
-gradlew build -Dquarkus.package.type=native -Dquarkus.native.container-build=true
+./gradlew build -Dquarkus.package.type=native -Dquarkus.native.container-build=true
 ```
 
 ## Créer l'image native docker
