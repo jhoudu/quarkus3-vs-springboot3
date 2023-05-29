@@ -64,20 +64,6 @@ Pour la lancer
 docker run -i --rm -p 8080:8080 quarkus/service-micro
 ```
 
-## Lancer le test
-
-Dans un shell lancer :
-
-```shell script
-bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:8080/customers/Josh)" != "200" ]]; do sleep .00001; done'
-```
-
-Dans un autre shell, lancer un des containers à tester :
-
-```shell script
-date +"%T.%3N" && docker run -ti --rm -p 8080:8080 quarkus/service-jvm
-```
-
 # Documentation générée
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
