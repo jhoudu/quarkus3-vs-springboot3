@@ -46,7 +46,7 @@ Lancer le shell pour la boucle de requête
 /loop-curl.sh
 ```
 
-Lancer le container
+Lancer un des containers. Exemple :
 
 ```shell script
 date +"%T.%3N" &&  ./quarkus3/service/run-quarkus-jvm.sh
