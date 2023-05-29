@@ -18,6 +18,12 @@ Repris de https://github.com/joshlong/bootiful-spring-boot-3/
 docker build -f src/main/docker/Dockerfile.jvm -t springboot/service-jvm .
 ``` 
 
+Pour la lancer
+
+```shell script
+docker run -i --rm -p 8080:8080 springboot/service-jvm
+```
+
 ## Consruire l'image native
 
 ```shell script
