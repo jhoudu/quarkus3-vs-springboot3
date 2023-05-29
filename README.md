@@ -34,22 +34,18 @@ https://www.graalvm.org/22.1/docs/getting-started/linux/
 
 https://quarkus.io/guides/building-native-image
 
-
-
-
-
 ## Mesurer le startup time
 
-Lancer le shell pour la boucle de requête
+Dans un shell lancer :
 
 ```shell script
-/loop-curl.sh
+bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:8080/customers/Josh)" != "200" ]]; do sleep .00001; done'
 ```
 
-Lancer un des containers. Exemple :
+Dans un autre shell, lancer un des containers à tester :
 
 ```shell script
-date +"%T.%3N" &&  ./quarkus3/service/run-quarkus-jvm.sh
+date +"%T.%3N" && docker run -ti --rm -p 8080:8080 quarkus/service-jvm
 ```
 
 Calculer la différence entre la première et la dernière date.
