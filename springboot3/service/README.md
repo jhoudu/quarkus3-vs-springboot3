@@ -29,21 +29,9 @@ docker run -i --rm -p 8080:8080 springboot/service-jvm
 ```shell script
 ./gradlew bootBuildImage
 ``` 
+
 Pour la lancer
 
 ```shell script
 docker run -ti --rm -p 8080:8080 service:0.0.1-SNAPSHOT
-
-## Lancer le test
-
-Dans un shell lancer :
-
-```shell script
-../../loop-curl.sh
-```
-
-Dans un autre shell, lancer :
-
-```shell script
-date +"%T.%3N" &&  ./run-springboot-jvm.sh
 ```
