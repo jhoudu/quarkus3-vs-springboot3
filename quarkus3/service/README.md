@@ -72,7 +72,7 @@ Dans un shell lancer :
 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:8080/customers/Josh)" != "200" ]]; do sleep .00001; done'
 ```
 
-Dans un autre shell, lancer :
+Dans un autre shell, lancer un des containers à tester :
 
 ```shell script
 date +"%T.%3N" && docker run -ti --rm -p 8080:8080 quarkus/service-jvm
