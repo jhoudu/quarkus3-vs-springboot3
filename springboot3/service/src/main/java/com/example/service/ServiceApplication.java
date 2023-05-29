@@ -15,6 +15,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @SpringBootApplication
 public class ServiceApplication {
 
@@ -25,7 +28,8 @@ public class ServiceApplication {
 
     @Bean
     ApplicationRunner applicationRunner(CustomerRepository repository) {
-        return args -> repository.findAll().forEach(System.out::println);
+        return arg -> System.out.println(new SimpleDateFormat("HH:mm:ss.SSS").format(new Date()));
+        //return args -> repository.findAll().forEach(System.out::println);
     }
 }
 
@@ -45,6 +49,7 @@ class CustomerHttpController {
     @GetMapping("/customers/{name}")
     Iterable<Customer> byName(@PathVariable String name) {
         Assert.state(Character.isUpperCase(name.charAt(0)), "the name must start with an uppercase letter");
+        System.out.println(new SimpleDateFormat("HH:mm:ss.SSS").format(new Date()));
         return Observation
                 .createNotStarted("by-name", this.registry)
                 .observe(() -> repository.findByName(name));
