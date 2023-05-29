@@ -35,11 +35,6 @@ for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
 @rem Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
 set DEFAULT_JVM_OPTS="-Xmx64m" "-Xms64m"
 
-@rem pour ne pas casser la config du pc
-set GRAALVM_HOME=C:\Users\Jean-Emmanuel Houdu\.jdks\graalvm-ce-17
-set JAVA_HOME=%GRAALVM_HOME%
-set PATH=%JAVA_HOME%\bin;%PATH%
-
 @rem Find java.exe
 if defined JAVA_HOME goto findJavaFromJavaHome
 
