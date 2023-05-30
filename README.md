@@ -52,6 +52,25 @@ Calculer la différence entre la première et la dernière date.
 
 ## Lancer docker compose
 
+Dans le répertoire <répertoire projet>/docker-compose :
+
 ```shell script
 docker compose up
+```
+
+## Corriger les problèmes sur cAdvisor
+
+Il semble que cAdvisor soit instable avec WSL2.
+
+Si cAdvisor ne récupère les metrics des containers alors il faut appliquer la solution ci-dessous.
+
+Le bon chemin pour le dossier à monter se vérifie dans le navigateur (icône Linux).
+
+https://github.com/logos-co/wakurtosis/issues/58
+
+Au premier lancement, tester sans les lignes suivantes dans docker-compose.yml :
+
+```shell script
+      - /etc/machine-id:/etc/machine-id:ro # <--- new volume
+      - /mnt/windows_docker/:/rootfs/var/lib/docker:ro # <--- new volume
 ```
