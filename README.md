@@ -1,6 +1,14 @@
 # quarkus3-vs-springboot3
 
-Projet de comparaison entre Quarkus 3 et Spring Boot 3
+Comparaison entre Quarkus 3 et Spring Boot 3 sur une service REST de liste de clients (noms).
+
+Test de GraalVM et des exécutions JVM et natives.
+
+Test du monitioring :
+
+* cAvisor
+* Prometheus
+* Grafana
 
 ## Configurer le projet sous windows
 
@@ -34,23 +42,7 @@ https://www.graalvm.org/22.1/docs/getting-started/linux/
 
 https://quarkus.io/guides/building-native-image
 
-## Mesurer le startup time
-
-Dans un shell lancer :
-
-```shell script
-bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:8080/customers/Josh)" != "200" ]]; do sleep .00001; done'
-```
-
-Dans un autre shell, lancer un des containers à tester :
-
-```shell script
-date +"%T.%3N" && docker run -ti --rm -p 8080:8080 quarkus/service-jvm
-```
-
-Calculer la différence entre la première et la dernière date.
-
-## Lancer docker compose
+## Usage
 
 Dans le répertoire <répertoire projet>/docker-compose :
 
@@ -74,3 +66,19 @@ Au premier lancement, tester sans les lignes suivantes dans docker-compose.yml :
       - /etc/machine-id:/etc/machine-id:ro # <--- new volume
       - /mnt/windows_docker/:/rootfs/var/lib/docker:ro # <--- new volume
 ```
+
+## Mesurer le startup time
+
+Dans un shell lancer :
+
+```shell script
+bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:8080/customers/Josh)" != "200" ]]; do sleep .00001; done'
+```
+
+Dans un autre shell, lancer un des containers à tester :
+
+```shell script
+date +"%T.%3N" && docker run -ti --rm -p 8080:8080 quarkus/service-jvm
+```
+
+Calculer la différence entre la première et la dernière date.
