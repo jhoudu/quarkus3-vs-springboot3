@@ -1,6 +1,11 @@
 # quarkus3-vs-springboot3
 
-Projet de comparaison entre Quarkus 3 et Spring Boot 3
+Comparaison entre Quarkus 3 et Spring Boot 3 sur une service REST de liste de clients (noms).
+Test de GraalVM et des exécutions JVM et natives.
+Test du monitioring :
+* cAvisor
+* Prometheus
+* Grafana
 
 ## Configurer le projet sous windows
 
