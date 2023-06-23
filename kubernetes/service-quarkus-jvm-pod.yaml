@@ -1,0 +1,26 @@
+---
+
+ apiVersion: v1
+
+ kind: Pod
+
+ metadata:
+
+   name: service-quarkus-jvm-pod
+   
+   labels: 
+    app: service-quarkus-jvm-app
+
+ spec:
+
+   containers:
+
+     - imagePullPolicy: Never
+       
+       name: service-quarkus-jvm
+
+       image: quarkus/service-jvm
+
+       ports:
+
+         - containerPort: 8080

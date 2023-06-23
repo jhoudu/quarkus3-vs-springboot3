@@ -1,0 +1,26 @@
+---
+
+ apiVersion: v1
+
+ kind: Pod
+
+ metadata:
+
+   name: service-springboot-jvm
+   
+   labels: 
+    app: service-springboot-jvm-app
+
+ spec:
+
+   containers:
+
+     - imagePullPolicy: Never
+       
+       name: service-springboot-jvm
+
+       image: springboot/service-jvm
+
+       ports:
+
+         - containerPort: 8080

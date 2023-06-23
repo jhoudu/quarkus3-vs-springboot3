@@ -1,0 +1,73 @@
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+
+  name: cadvisor-pod
+  
+  labels: 
+    app: cadvisor-app
+
+spec:
+
+      containers:
+      
+        - imagePullPolicy: Never
+
+          name: cadvisor
+          
+          image: gcr.io/cadvisor/cadvisor:v0.47.0
+
+          ports:
+            - containerPort: 8080
+            
+          
+          securityContext:
+            privileged: true
+
+          volumeMounts:
+            - name: rootfs
+              mountPath: /rootfs
+              readOnly: true
+            - name: var-run
+              mountPath: /var/run
+              readOnly: false
+            - name: sys
+              mountPath: /sys
+              readOnly: true
+            - name: docker
+              mountPath: /var/lib/docker
+              readOnly: true
+            - name: dev-disk
+              mountPath: /dev/disk
+              readOnly: true
+            - name: machine-id
+              mountPath: /etc/machine-id
+              readOnly: true
+            - name: lib-docker
+              mountPath: /rootfs/var/lib/docker
+              readOnly: true
+
+      volumes:
+        - name: rootfs
+          hostPath:
+            path: /
+        - name: var-run
+          hostPath:
+            path: /var/run
+        - name: sys
+          hostPath:
+            path: /sys
+        - name: docker
+          hostPath:
+            path: /var/lib/docker/
+        - name: dev-disk
+          hostPath:
+            path: /dev/disk/
+        - name: machine-id
+          hostPath:
+            path: /etc/machine-id
+        - name: lib-docker
+          hostPath:
+            path: /mnt/windows_docker/

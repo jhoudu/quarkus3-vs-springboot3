@@ -1,0 +1,26 @@
+---
+
+ apiVersion: v1
+
+ kind: Pod
+
+ metadata:
+
+   name: service-springboot-native-pod
+   
+   labels: 
+    app: service-springboot-native-app
+
+ spec:
+
+   containers:
+
+     - imagePullPolicy: Never
+       
+       name: service-springboot-native
+
+       image: service:0.0.1-SNAPSHOT
+
+       ports:
+
+         - containerPort: 8080
