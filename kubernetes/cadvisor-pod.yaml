@@ -13,9 +13,7 @@ spec:
 
       containers:
       
-        - imagePullPolicy: Never
-
-          name: cadvisor
+        - name: cadvisor
           
           image: gcr.io/cadvisor/cadvisor:v0.47.0
 
@@ -27,9 +25,9 @@ spec:
             privileged: true
 
           volumeMounts:
-            - name: rootfs
-              mountPath: /rootfs
-              readOnly: true
+            #- name: rootfs
+            #  mountPath: /rootfs
+            #  readOnly: true
             - name: var-run
               mountPath: /var/run
               readOnly: false
@@ -42,17 +40,17 @@ spec:
             - name: dev-disk
               mountPath: /dev/disk
               readOnly: true
-            - name: machine-id
-              mountPath: /etc/machine-id
-              readOnly: true
-            - name: lib-docker
-              mountPath: /rootfs/var/lib/docker
-              readOnly: true
+            #- name: machine-id
+            #  mountPath: /etc/machine-id
+            #  readOnly: true
+            #- name: lib-docker
+            #  mountPath: /rootfs/var/lib/docker
+            #  readOnly: true
 
       volumes:
-        - name: rootfs
-          hostPath:
-            path: /
+        #- name: rootfs
+        #  hostPath:
+        #    path: /
         - name: var-run
           hostPath:
             path: /var/run
@@ -65,9 +63,9 @@ spec:
         - name: dev-disk
           hostPath:
             path: /dev/disk/
-        - name: machine-id
-          hostPath:
-            path: /etc/machine-id
-        - name: lib-docker
-          hostPath:
-            path: /mnt/windows_docker/
+        #- name: machine-id
+        #  hostPath:
+        #   path: /etc/machine-id
+        #- name: lib-docker
+        #  hostPath:
+        #    path: /mnt/windows_docker/
